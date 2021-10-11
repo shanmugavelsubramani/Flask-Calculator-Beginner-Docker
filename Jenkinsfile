@@ -4,13 +4,13 @@ pipeline {
         stage('Build') {
           steps {
             sh 'echo "building the repo"'
-            sh 'pip3.8 install -r requirements.txt'
+            sh 'pip install -r requirements.txt'
           }
     }
 
     stage('Test') {
       steps {
-        sh 'python3.8 test_app.py'
+        sh 'python test_app.py'
         input(id: "Deploy Gate", message: "Deploy ${params.project_name}?", ok: 'Deploy')
       }
     }
