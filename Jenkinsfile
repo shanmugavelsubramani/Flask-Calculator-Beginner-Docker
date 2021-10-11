@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent { docker { image 'python:3.8.2' } }
   stages {
     stage('Build') {
       parallel {
@@ -8,7 +8,7 @@ pipeline {
             sh 'echo "building the repo"'
 //             echo 'Creating virtualenv ...'
 //             sh 'virtualenv --no-site-packages .env'
-// 
+//
 //             sh """
 //                    . .env/bin/activate
 //                    pip install -r requirements.txt
