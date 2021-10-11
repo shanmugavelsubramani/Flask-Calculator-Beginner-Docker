@@ -6,13 +6,6 @@ pipeline {
         stage('Build') {
           steps {
             sh 'echo "building the repo"'
-//             echo 'Creating virtualenv ...'
-//             sh 'virtualenv --no-site-packages .env'
-//
-//             sh """
-//                    . .env/bin/activate
-//                    pip install -r requirements.txt
-//                    """
           }
         }
       }
