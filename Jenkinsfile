@@ -1,16 +1,16 @@
 pipeline {
-  agent { docker { image 'python:3.7.2' } }
+  agent any
   stages {
         stage('Build') {
           steps {
             sh 'echo "building the repo"'
-            sh 'pip3 install -r requirements.txt'
+            sh 'pip3.8 install -r requirements.txt'
           }
     }
 
     stage('Test') {
       steps {
-        sh 'python3 test_app.py'
+        sh 'python3.8 test_app.py'
         input(id: "Deploy Gate", message: "Deploy ${params.project_name}?", ok: 'Deploy')
       }
     }
