@@ -6,7 +6,7 @@ pipeline {
         stage('Build') {
           steps {
             sh 'echo "building the repo"'
-            sh '.venv/bin/activate'
+            sh '. .venv/bin/activate'
             sh 'pip3 install -r requirements.txt'
           }
         }
