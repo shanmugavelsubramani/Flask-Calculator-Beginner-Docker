@@ -6,13 +6,13 @@ pipeline {
         stage('Build') {
           steps {
             sh 'echo "building the repo"'
-            echo 'Creating virtualenv ...'
-            sh 'virtualenv --no-site-packages .env'
-
-            sh """
-                   . .env/bin/activate
-                   pip install -r requirements.txt
-                   """
+//             echo 'Creating virtualenv ...'
+//             sh 'virtualenv --no-site-packages .env'
+// 
+//             sh """
+//                    . .env/bin/activate
+//                    pip install -r requirements.txt
+//                    """
           }
         }
       }
@@ -20,6 +20,7 @@ pipeline {
 
     stage('Test') {
       steps {
+      sh 'pip3 install -r requirements.txt'
         sh 'python3 test_app.py'
         input(id: "Deploy Gate", message: "Deploy ${params.project_name}?", ok: 'Deploy')
       }
