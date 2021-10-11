@@ -6,14 +6,8 @@ pipeline {
         stage('Build') {
           steps {
             sh 'echo "building the repo"'
-            if (!fileExists('.venv')){
-                    echo 'Creating virtualenv ...'
-                    sh 'virtualenv --no-site-packages .venv'
-                }
-                sh '. .venv/bin/activate'
-                if (fileExists('requirements.txt')){
-                    sh 'pip install -r requirements.txt'
-                }
+            sh '.venv/bin/activate'
+            sh 'pip3 install -r requirements.txt'
           }
         }
       }
